@@ -1,6 +1,6 @@
 # Loan APR Calculator
 
-Finds the real yearly interest rate behind a loan offer, and compares up to three offers side by side. It works offline, nothing is uploaded, and there is no account.
+Finds the real yearly interest rate behind a loan offer, and compares up to three offers side by side. The numbers you type never leave your device, and there is no account. The Android app works with no internet at all; the web version needs a connection to load the page.
 
 For anyone who has been told "only 12% flat, small processing fee" and wants to know what that costs per year.
 

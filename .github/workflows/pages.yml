@@ -25,7 +25,7 @@ jobs:
           channel: stable
           cache: true
       - run: flutter pub get
-      - run: flutter build web --release --base-href /loan-apr-calculator/
+      - run: flutter build web --release --no-web-resources-cdn --base-href /loan-apr-calculator/
       - uses: actions/upload-pages-artifact@v3
         with:
           path: build/web
