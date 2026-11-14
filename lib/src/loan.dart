@@ -145,7 +145,6 @@ LoanResult? evaluate(LoanOffer o) {
     amountReceived: received,
     totalCost: total - received,
     aprPercent: i == null ? null : i * 1200,
-    effectiveAnnualPercent:
-        i == null ? null : (math.pow(1 + i, 12) - 1) * 100,
+    effectiveAnnualPercent: i == null ? null : (math.pow(1 + i, 12) - 1) * 100,
   );
 }

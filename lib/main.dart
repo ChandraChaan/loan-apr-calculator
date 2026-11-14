@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'src/home_page.dart';
+import 'src/look.dart';
 
 void main() => runApp(const LoanAprApp());
 
@@ -12,15 +13,8 @@ class LoanAprApp extends StatelessWidget {
     return MaterialApp(
       title: 'Loan APR Calculator',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorSchemeSeed: const Color(0xFF0B7A4B),
-        useMaterial3: true,
-      ),
-      darkTheme: ThemeData(
-        colorSchemeSeed: const Color(0xFF0B7A4B),
-        brightness: Brightness.dark,
-        useMaterial3: true,
-      ),
+      theme: Look.light.theme(Brightness.light),
+      darkTheme: Look.dark.theme(Brightness.dark),
       home: const HomePage(),
     );
   }

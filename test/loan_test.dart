@@ -12,18 +12,17 @@ LoanOffer offer({
   double fee = 0,
   double gst = 18,
   double other = 0,
-}) =>
-    LoanOffer(
-      name: 't',
-      principal: principal,
-      months: months,
-      kind: kind,
-      ratePercent: rate,
-      givenEmi: emi,
-      processingFeePercent: fee,
-      gstOnFeePercent: gst,
-      otherUpfront: other,
-    );
+}) => LoanOffer(
+  name: 't',
+  principal: principal,
+  months: months,
+  kind: kind,
+  ratePercent: rate,
+  givenEmi: emi,
+  processingFeePercent: fee,
+  gstOnFeePercent: gst,
+  otherUpfront: other,
+);
 
 void main() {
   test('reducing EMI matches the standard formula value', () {
@@ -53,16 +52,25 @@ void main() {
     expect(flat.aprPercent!, greaterThan(reducing.aprPercent! * 1.5));
   });
 
-  test('IRR is self consistent: EMIs discounted at the APR give back the cash', () {
-    final o = offer(kind: RateKind.flat, rate: 14, months: 24, fee: 2, other: 500);
-    final r = evaluate(o)!;
-    final i = r.aprPercent! / 1200;
-    var pv = 0.0;
-    for (var m = 1; m <= 24; m++) {
-      pv += r.emi / math.pow(1 + i, m);
-    }
-    expect(pv, closeTo(r.amountReceived, 0.01));
-  });
+  test(
+    'IRR is self consistent: EMIs discounted at the APR give back the cash',
+    () {
+      final o = offer(
+        kind: RateKind.flat,
+        rate: 14,
+        months: 24,
+        fee: 2,
+        other: 500,
+      );
+      final r = evaluate(o)!;
+      final i = r.aprPercent! / 1200;
+      var pv = 0.0;
+      for (var m = 1; m <= 24; m++) {
+        pv += r.emi / math.pow(1 + i, m);
+      }
+      expect(pv, closeTo(r.amountReceived, 0.01));
+    },
+  );
 
   test('processing fee with GST raises the APR and lowers cash received', () {
     final plain = evaluate(offer(rate: 12))!;
@@ -89,7 +97,10 @@ void main() {
     expect(evaluate(offer(principal: 0)), isNull);
     expect(evaluate(offer(months: 0)), isNull);
     expect(evaluate(offer(kind: RateKind.emiOnly, emi: 0)), isNull);
-    expect(evaluate(offer(other: 100000)), isNull,
-        reason: 'charges equal to the whole loan leave nothing received');
+    expect(
+      evaluate(offer(other: 100000)),
+      isNull,
+      reason: 'charges equal to the whole loan leave nothing received',
+    );
   });
 }

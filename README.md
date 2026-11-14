@@ -4,6 +4,10 @@ Finds the real yearly interest rate behind a loan offer, and compares up to thre
 
 For anyone who has been told "only 12% flat, small processing fee" and wants to know what that costs per year.
 
+<img src="docs/compare.png" width="320" alt="Two offers of 12 percent: flat costs 21.46 percent a year and 12,000 rupees, reducing costs 12 percent and 6,619 rupees">
+
+<sub>The same "12%" two ways: flat is really 21.46% a year and costs ₹12,000 on ₹1,00,000; reducing is 12% and costs ₹6,619.</sub>
+
 ## What it does
 
 - Takes an offer as **flat rate**, **reducing-balance rate**, or **only the EMI** (some lenders and shops quote nothing else).
